@@ -61,3 +61,6 @@ Si estás desarrollando una aplicación para producción, se recomienda actualiz
 - Para instalar las dependencias, utiliza:
   ```bash
   npm i
+- Para ejecutar el proyecto, utiliza:
+  ```bash
+  npm run dev

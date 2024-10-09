@@ -60,16 +60,4 @@ Si estás desarrollando una aplicación para producción, se recomienda actualiz
 ## Comandos
 - Para instalar las dependencias, utiliza:
   ```bash
-  npm i},
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+  npm i

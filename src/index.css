@@ -6,9 +6,31 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Lexend Tera", sans-serif;
+
   box-sizing: border-box;
 }
 .shadow-dark {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 320px) {
+  .mobile-sm {
+    width: 100%;
+  }
+  .text-mobile-xs {
+    font-size: 9px;
+  }
+  .icon-wpp-xs {
+    width: 20px;
+    padding-bottom: 3px;
+  }
+}
+@media (min-width: 321px) and (max-width: 376px) {
+  .mobile-md {
+    width: 95%;
+  }
+  .text-mobile-md {
+    font-size: 16px;
+  }
 }

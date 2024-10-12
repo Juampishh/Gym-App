@@ -9,6 +9,9 @@ export default {
         negro: "#000000",
         grisClaro: "#D8D5D5",
       },
+      fontFamily: {
+        sans: "Red Hat Text",
+      },
     },
   },
   plugins: [],

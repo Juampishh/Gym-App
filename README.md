@@ -1,50 +1,66 @@
-# React + TypeScript + Vite
+# Proyecto de React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto proporciona una configuración mínima para hacer que React funcione con Vite, incluyendo Hot Module Replacement (HMR) y algunas reglas de ESLint.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React y TypeScript**: Utiliza las últimas versiones de React y TypeScript para un desarrollo moderno y eficiente.
+- **Vite**: Un entorno de desarrollo rápido que aprovecha la carga en caliente para una experiencia de desarrollo fluida.
+- **ESLint**: Configuración de ESLint para mantener la calidad del código.
 
-## Expanding the ESLint configuration
+## Plugins de Vite
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Actualmente, se encuentran disponibles dos plugins oficiales para integrar React:
 
-- Configure the top-level `parserOptions` property like this:
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md): Utiliza [Babel](https://babeljs.io/) para Fast Refresh.
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc): Utiliza [SWC](https://swc.rs/) para Fast Refresh.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Expansión de la configuración de ESLint
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Si estás desarrollando una aplicación para producción, se recomienda actualizar la configuración para habilitar reglas de linting basadas en tipos:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. Configura la propiedad `parserOptions` en el nivel superior de la siguiente manera:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+    ```javascript
+    export default tseslint.config({
+      languageOptions: {
+        // otras opciones...
+        parserOptions: {
+          project: ['./tsconfig.node.json', './tsconfig.app.json'],
+          tsconfigRootDir: import.meta.dirname,
+        },
+      },
+    });
+    ```
+
+2. Cambia `tseslint.configs.recommended` por `tseslint.configs.recommendedTypeChecked` o `tseslint.configs.strictTypeChecked`.
+3. Opcionalmente, agrega `...tseslint.configs.stylisticTypeChecked`.
+4. Instala [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) y actualiza la configuración:
+
+    ```javascript
+    // eslint.config.js
+    import react from 'eslint-plugin-react';
+
+    export default tseslint.config({
+      // Establece la versión de React
+      settings: { react: { version: '18.3' } },
+      plugins: {
+        // Agrega el plugin de React
+        react,
+      },
+      rules: {
+        // otras reglas...
+        // Habilita las reglas recomendadas
+        ...react.configs.recommended.rules,
+        ...react.configs['jsx-runtime'].rules,
+      },
+    });
+    ```
+
+## Comandos
+- Para instalar las dependencias, utiliza:
+  ```bash
+  npm i
+- Para ejecutar el proyecto, utiliza:
+  ```bash
+  npm run dev

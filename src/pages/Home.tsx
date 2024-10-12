@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="w-full min-h-screen overflow-x-hidden">
       <Navbar />
-      <div className="relative w-full min-h-screen">
+      <div className="relative w-full ">
         <motion.div
           className="absolute top-0 left-0 z-0 w-full h-full bg-negro opacity-90"
           initial="hidden"

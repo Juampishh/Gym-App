@@ -11,13 +11,13 @@ export default function Login() {
   };
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full min-h-screen">
       <Navbar />
       <div className="relative">
         <img
           src="../Login/Body.jfif"
           alt=""
-          className="object-cover w-full h-screen"
+          className="object-cover w-full min-h-screen"
         />
         <div className="absolute top-0 left-0 z-0 w-full h-full bg-black opacity-80" />
 
@@ -32,10 +32,10 @@ export default function Login() {
 
         <div className="absolute inset-0 z-0 flex flex-col items-center justify-center mt-10">
           <motion.div
-            className={`z-0 w-4/5  mt-24 mobile-sm mobile-md  ${
+            className={`z-0 w-4/5 mt-24 mobile-sm mobile-md  ${
               showInput
-                ? "bg-gradient-to-r h-24 from-negroClaro  to-negro opacity-40 p-6 rounded-3xl"
-                : "bg-gradient-to-r h-20 from-grisClaro to-negro opacity-30  p-4 rounded-full"
+                ? "bg-gradient-to-r h-24 from-negroClaro to-negro opacity-40 p-6 rounded-3xl"
+                : "bg-gradient-to-r h-20 from-grisClaro to-negro opacity-30 p-4 rounded-full"
             } `}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -61,20 +61,21 @@ export default function Login() {
             </div>
           )}
           {showInput && (
-            <div className="absolute flex flex-col items-center justify-center w-full gap-2 pt-40 ">
+            <div className="absolute flex flex-col items-center justify-center w-full gap-2 pt-40">
               <input
-                className="w-4/6 p-1.5 font-sans font-semibold text-white bg-black rounded-full p text-md opacity-30"
+                className="w-4/6 p-2 font-sans text-xs font-semibold text-white placeholder-opacity-50 bg-black  border-[1px] border-gray-500 rounded-full text-md"
                 type="text"
-                placeholder="Ingresa correo electrónico"
+                placeholder="INGRESAR CORREO ELECTRONICO"
               />
               <input
-                className="w-4/6 p-1.5 font-sans font-semibold text-white bg-black rounded-full text-md opacity-30"
-                type="text"
-                placeholder="Ingresa contraseña"
+                className="w-4/6 p-2 font-sans text-xs font-semibold text-white placeholder-opacity-50 bg-black  border-[1px] border-gray-500 rounded-full text-md"
+                type="password"
+                placeholder="INGRESAR CONTRASEÑA"
               />
+
               <div className="mt-5">
                 <motion.button
-                  className="w-full p-2 text-xs font-bold text-black rounded-full h bg-amarillo"
+                  className="w-full p-2 text-xs font-bold text-black rounded-full bg-amarillo"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                   onClick={() => navigate("/home")}

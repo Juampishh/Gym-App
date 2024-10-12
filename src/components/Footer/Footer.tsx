@@ -7,7 +7,7 @@ export default function Footer() {
       <ul className="flex items-center justify-around gap-4 md:gap-6">
         <li
           onClick={() => {
-            navigate("/rutine");
+            navigate("/nutrition");
           }}
           className="flex flex-col items-center text-white"
         >
@@ -46,7 +46,7 @@ export default function Footer() {
         </li>
         <li
           onClick={() => {
-            navigate("/rutine");
+            navigate("/students");
           }}
           className="flex flex-col items-center text-white"
         >

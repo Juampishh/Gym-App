@@ -4,7 +4,12 @@ import Navbar from "../components/Navbar/Navbar";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { fadeIn, fadeInUp, zoomIn } from "../components/Animations/Animations";
 
+import { useUser } from "../context/UserContext";
+
 export default function Home() {
+  const { user } = useUser();
+  console.log(user);
+
   return (
     <div className="w-full min-h-screen overflow-x-hidden">
       <Navbar />
@@ -46,7 +51,10 @@ export default function Home() {
           >
             <div className="pl-5">
               <h1 className="text-2xl text-white sm:text-xl md:text-3xl">
-                Bienvenido, <span className="font-bold">Tomás!</span>
+                Bienvenido,{" "}
+                <span className="font-bold">
+                  {user ? user.firstName : "Tomas"}
+                </span>
               </h1>
               <p className="text-sm text-white sm:text-xs md:text-base">
                 Esta es tu información actual:

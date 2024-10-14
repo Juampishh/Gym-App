@@ -20,7 +20,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {location.pathname !== "/" && (
+      {location.pathname !== "/" && location.pathname !== "/register" && (
         <div className="flex items-center">
           <button
             className="flex items-center p-1 text-amarillo hover:text-amarillo"

@@ -2,12 +2,44 @@ import { motion } from "framer-motion";
 import Navbar from "../components/Navbar/Navbar";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useUser } from "../context/UserContext";
+
+interface FormData {
+  username: string;
+  password: string;
+}
 
 export default function Login() {
   const navigate = useNavigate();
   const [showInput, setShowInput] = useState(false);
+  const { setUser } = useUser();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
+
   const handleShowInput = () => {
     setShowInput(true);
+  };
+
+  const onSubmit = async (data: FormData) => {
+    try {
+      const response = await axios.post(
+        "https://api-generica-nine.vercel.app/auth/login",
+        data
+      );
+      if (response.status === 200) {
+        setUser(response.data.data);
+        navigate("/home");
+      }
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error);
+      toast.error("Usuario o contraseña incorrectos");
+    }
   };
 
   return (
@@ -44,6 +76,9 @@ export default function Login() {
           {!showInput && (
             <div className="absolute z-10 flex gap-2 mt-24">
               <motion.button
+                onClick={() => {
+                  navigate("/register");
+                }}
                 className="h-10 p-1 text-xs font-bold rounded-full bg-grisClaro text-negro"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
@@ -62,27 +97,47 @@ export default function Login() {
           )}
           {showInput && (
             <div className="absolute flex flex-col items-center justify-center w-full gap-2 pt-40">
-              <input
-                className="w-4/6 p-2 font-sans text-xs font-semibold text-white placeholder-opacity-50 bg-black  border-[1px] border-gray-500 rounded-full text-md"
-                type="text"
-                placeholder="INGRESAR CORREO ELECTRONICO"
-              />
-              <input
-                className="w-4/6 p-2 font-sans text-xs font-semibold text-white placeholder-opacity-50 bg-black  border-[1px] border-gray-500 rounded-full text-md"
-                type="password"
-                placeholder="INGRESAR CONTRASEÑA"
-              />
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="flex flex-col items-center w-4/6 gap-2"
+              >
+                <input
+                  className="w-full p-2 font-sans text-xs font-semibold text-white placeholder-opacity-50 bg-black border-[1px] border-gray-500 rounded-full text-md"
+                  type="text"
+                  placeholder="INGRESAR USUARIO"
+                  {...register("username", { required: "Usuario requerido" })}
+                />
+                {errors.username && (
+                  <span className="text-xs text-red-500">
+                    {errors.username.message}
+                  </span>
+                )}
 
-              <div className="mt-5">
-                <motion.button
-                  className="w-full p-2 text-xs font-bold text-black rounded-full bg-amarillo"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  onClick={() => navigate("/home")}
-                >
-                  INICIAR SESIÓN
-                </motion.button>
-              </div>
+                <input
+                  className="w-full p-2 font-sans text-xs font-semibold text-white placeholder-opacity-50 bg-black border-[1px] border-gray-500 rounded-full text-md"
+                  type="password"
+                  placeholder="INGRESAR CONTRASEÑA"
+                  {...register("password", {
+                    required: "Contraseña requerida",
+                  })}
+                />
+                {errors.password && (
+                  <span className="text-xs text-red-500">
+                    {errors.password.message}
+                  </span>
+                )}
+
+                <div className="mt-5">
+                  <motion.button
+                    className="w-full p-2 text-xs font-bold text-black rounded-full bg-amarillo"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    type="submit"
+                  >
+                    INICIAR SESIÓN
+                  </motion.button>
+                </div>
+              </form>
             </div>
           )}
         </div>

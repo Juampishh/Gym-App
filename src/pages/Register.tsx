@@ -37,7 +37,7 @@ export default function Register() {
           "https://api-generica-nine.vercel.app/auth/login",
           data
         );
-        if (login.status === 200) {
+        if (login.status === 201) {
           setUser(login.data.data);
           toast.success("Bienvenido");
           navigate("/home");

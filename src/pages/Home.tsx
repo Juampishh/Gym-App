@@ -8,7 +8,7 @@ import { useUser } from "../context/UserContext";
 
 export default function Home() {
   const { user } = useUser();
-  console.log(user);
+
 
   return (
     <div className="w-full min-h-screen overflow-x-hidden">
